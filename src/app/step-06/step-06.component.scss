@@ -1,0 +1,87 @@
+@import '../../styles.scss';
+
+#step-06 {
+  .row {
+    h3 {
+      text-align: center;
+      margin-bottom: 30px;
+      @media screen and (max-width: 400px) {
+        margin-bottom: 0;
+      }
+    }
+    img {
+      margin-bottom: 30px;
+    }
+  }
+  .survey-res,
+  .form-container {
+    margin-top: 0;
+    margin-bottom: 16px;
+    p {
+      strong.txt-blue {
+        font-size: 1.3rem;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  ::ng-deep
+    .route-radio-button:nth-of-type(1)
+    > label
+    > .mat-radio-label-content::before {
+    font-weight: bold;
+    content: '';
+  }
+  ::ng-deep
+    .route-radio-button:nth-of-type(2)
+    > label
+    > .mat-radio-label-content::before {
+    font-weight: bold;
+    content: '';
+  }
+  ::ng-deep
+    .route-radio-button:nth-of-type(3)
+    > label
+    > .mat-radio-label-content::before {
+    font-weight: bold;
+    // content: 'Double Grand Prize Entry Re-registration:';
+  }
+}
+
+p,
+ul {
+  margin-bottom: 2rem;
+}
+
+::ng-deep .mat-radio-label-content {
+  white-space: normal;
+}
+
+.mat-radio-button {
+  display: block;
+}
+.bottom-nav-row {
+  margin-top: 40px;
+}
+
+.button-font {
+  font-family: FuturaBold, Arial, sans-serif;
+}
+
+.orContainer {
+  position: relative;
+  .orTextCont {
+    width: 55px;
+    background: #fff;
+    margin: 0 auto 25px;
+    z-index: 99;
+  }
+  .border-btm {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 13px;
+    margin-bottom: 0;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,118 @@
+<app-stepper></app-stepper>
+<!-- Preloader -->
+<div class="mat-spinner-container" *ngIf="!surveyResults">
+  <div class="spinner-inner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+<div class="container" id="step-06" *ngIf="data">
+  <div class="row">
+    <div class="form-container">
+      <h3>Your Fundraising Snapshot</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="form-container">
+      <div
+        class="row head"
+        *ngIf="checkinStatus !== 'committed' && checkinStatus !== 'paid'"
+      >
+        <div class="col-md" *ngIf="amountRaised">
+          <p>Amount Raised:</p>
+          <h4 class="txt-blue">${{ amountRaised }}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <form
+      class="form-container"
+      [formGroup]="roadForm"
+      *ngIf="surveyResults.getSurveyResponsesResponse"
+    >
+      <div class="survey-res">
+        <div class="form-group">
+          <p>
+            <strong class="txt-blue"
+              >Select your Road to Rewards level that you are committing
+              to</strong
+            >
+          </p>
+          <p>
+            I will...
+          </p>
+          <!-- <mat-radio-group class="route-radio-group" formControlName="registerSelect" [(ngModel)]="registerResults">
+            <mat-radio-button required class="route-radio-button" color="primary" *ngFor="let option of registerOptions"
+              [value]="option.value">
+              {{ option.viewValue }}
+            </mat-radio-button>
+          </mat-radio-group> -->
+          <mat-radio-group
+            class="route-radio-group"
+            formControlName="roadSelect"
+            [(ngModel)]="roadResults"
+          >
+            <mat-radio-button
+              required
+              class="route-radio-button"
+              color="primary"
+              *ngFor="let selection of roadSelections"
+              [value]="selection.value"
+            >
+              {{ selection.viewValue }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="error-msg" *ngIf="roadError === true">
+            Road to Rewards selection is <strong>required</strong>
+          </div>
+        </div>        
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="form-container">
+      <p>
+        *Please be sure to share your 100-mile Ride with us on <a target="_blank" href="https://www.strava.com/clubs/the-enbridge-ride-to-conquer-cancer-669183">Strava</a> or tag us
+        on Facebook, Instagram or Twitter using #RideOn
+      </p>
+      <p>
+        **Your hammer ride must be completed in a single day to qualify.
+      </p>
+    </div>
+  </div>
+
+  <div class="row bottom-nav-row" *ngIf="surveyResults">
+    <div class="form-container">
+      <div class="btn-container">
+        <button
+          mat-raised-button
+          color="accent"
+          class="prev-btn button-font"
+          (click)="previousFlowStep()"
+        >
+          Back
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          class="next-btn button-font"
+          (click)="validating()"
+          [disabled]="roadForm.invalid"
+        >
+          Next
+        </button>
+      </div>
+      <div class="save-col">
+        <a
+          (click)="saveSurveyResponses()"
+          class="save-later float-right text-uppercase"
+          >Save For Later</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

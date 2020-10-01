@@ -1,0 +1,15 @@
+<!-- Hammer Text -->
+<div class="dialog-cont" *ngIf="dataService.participationType !== 'Crew'">  
+  <div mat-dialog-content>
+    <p>
+      The Hammer is a premium two-day experience for cyclists who want to take their Ride to the next level.
+    </p>
+    <p>
+      Your fundraising minimum will automatically increase to $4,000 and you will need to meet your new commitment to complete Online Check-In.
+    </p>
+    <p>
+      You can either pay any difference out of pocket today with an <strong>Instant Self-Pledge</strong> or pay $2 today and commit to fundraise the remaining before August 7 with a <strong>Delayed Self-Pledge</strong>.
+    </p>    
+    <button color="primary" mat-raised-button (click)="onNoClick()">Ok</button>
+  </div>
+</div>

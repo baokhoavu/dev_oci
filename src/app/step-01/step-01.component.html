@@ -1,0 +1,68 @@
+<!-- Preloader -->
+<div class="mat-spinner-container" *ngIf="!dataService">
+	<div class="spinner-inner">
+		<mat-spinner></mat-spinner>
+	</div>
+</div>
+
+<div *ngIf="dataService" class="container" id="login-container">
+	<div class="row justify-content-md-center align-self-center">
+		<div class="col-12 col-md-6">
+			<div class="login-form-container" *ngIf="closed">
+				<h2 class="text-center">Online Check-In is now closed</h2>
+				<p>
+					While Online Check-In is now closed, you can keep fundraising until October 29, 2020 in order to reach your fundraising goal. 
+				</p>
+				<p>
+					The funds you raise through the Enbridge<sup>®️</sup> Ride to Conquer Cancer<sup>®️</sup> enable the Princess Margaret Cancer Centre to make significant breakthroughs in patient care and research that impact the lives of people across Canada and around the world.
+				</p>
+			</div>
+
+			<div class="login-form-container" *ngIf="!closed">
+				<h2 class="text-center">Welcome</h2>
+
+				<p>Thank you for checking in to the Enbridge<sup>&reg;</sup> Ride to Conquer Cancer<sup>&reg;</sup>
+					benefiting Princess Margaret Cancer Centre. We’re excited for this year’s virtual Ride! </p>
+
+				<p>During check-in, you will have the opportunity to update your information, select a Road to
+					Rewards merchandise pick-up location, adjust your fundraising goals, make self-pledges and more. For
+					the smoothest check-in experience, we recommend you use
+					<a href="https://www.google.com/chrome/" target="_blank">Google Chrome.
+					</a>
+				</p>
+
+				<form id="ssoForm" [formGroup]="loginForm">
+					<div class="form-group">
+						<mat-form-field class="mat-input">
+							<input required matInput placeholder="Username..." [(ngModel)]="dataService.username"
+								[errorStateMatcher]="matcher" formControlName="username" />
+						</mat-form-field>
+						<div class="error-msg" *ngIf="userError === true">
+							Username is required.
+						</div>
+					</div>
+					<div class="form-group">
+						<mat-form-field class="mat-input">
+							<input required matInput [type]="hide ? 'password' : 'text'" placeholder="Password..."
+								[(ngModel)]="dataService.password" [errorStateMatcher]="matcher"
+								formControlName="password" />
+							<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}
+							</mat-icon>
+						</mat-form-field>
+						<div class="error-msg" *ngIf="passError === true">
+							Password is required.
+						</div>
+					</div>
+					<p class="note"><i>Having trouble logging in? Don’t hesitate to reach us at the Ride Office at [877]
+							699-BIKE [2453] with any further questions.</i></p>
+					<button mat-raised-button color="primary" (click)="validating()">
+						Login
+					</button>
+					<a class="fgpass" href="https://secure.conquercancer.ca/site/UserLogin?CMD=ForgotPassword">
+						Forgot Password?
+					</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,39 @@
+<!-- Rider Text -->
+<div class="dialog-cont">
+  <h1 *ngIf="dataService" mat-dialog-title class="dialog-h1">
+    Welcome, {{dataService.firstName}}!
+  </h1>
+  <div mat-dialog-content>
+    <p>
+      <strong>Tips For Easy Check-In:</strong>
+    </p>
+    <ul>
+      <li>
+        Use <a href="https://www.google.com/chrome/" target="_blank">Google Chrome</a> for an optimal check-in
+        experience.
+      </li>
+      <li>
+        Review and complete your online profile.
+      </li>
+      <li>
+        Confirm your fundraising commitment.
+      </li>
+      <li>
+        Watch our mandatory Safety Video.
+      </li>
+      <li>
+        Haven’t reached your desired Road to Rewards level yet? No problem, you’ll have an opportunity to make an
+        instant or delayed self-pledge to reach your goal.
+        <ul>
+          <li><strong>Instant Self-Pledge: </strong>Make a self-donation to achieve your Road to Rewards fundraising
+            goal now.</li>
+          <li><strong>Delayed Self-Pledge: </strong>Commit to raising the difference in fundraising to your Road to
+            Rewards goal by August 28th, 2020 with a $2 donation on your credit card. Your credit card information will
+            then be securely stored until October 29th, 2020 when the balance will be charged to your account if you
+            haven’t yet reached your fundraising goal.</li>
+        </ul>
+      </li>
+    </ul>
+    <button color="primary" mat-raised-button (click)="onNoClick()">Close</button>
+  </div>
+</div>

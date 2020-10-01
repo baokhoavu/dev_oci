@@ -1,0 +1,186 @@
+<app-stepper></app-stepper>
+
+<!-- Preloader -->
+<div class="mat-spinner-container" *ngIf="!fundResponse.getFundraisingResponse">
+  <div class="spinner-inner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+<div class="container" id="step-07">
+  <div class="form-container">
+    <div class="row">
+      <h3 *ngIf="fundsMet">Your Fundraising Snapshot</h3>
+      <div class="head-text" *ngIf="!fundsMet">
+        <h4>
+          Congratulations, you can complete Online Check-In.
+        </h4>
+        <p *ngIf="data.participationType === 'Crew'">
+          Thank you for supporting the Enbridge Ride to Conquer Cancer. As a
+          Crew Member, you have no fundraising minimum. Click the 'Next' button
+          to complete your Online Check-In.
+        </p>
+      </div>
+    </div>
+
+    <div class="row head" *ngIf="checkinStatus !== 'committed' && checkinStatus !== 'paid'
+      ">
+
+      <!-- <div class="col-md" *ngIf="minimumGoal">
+        <p>Minimum Required:</p>
+        <h4 class="txt-blue">${{ minimumGoal }}</h4>
+      </div> -->
+
+      <div class="col-md" *ngIf="amountRaised">
+        <p>Amount Raised:</p>
+        <h4 class="txt-blue">${{ amountRaised }}</h4>
+      </div>
+
+      <div *ngIf="upsellResponse === 'Yes'" class="col-md">
+        <p>You selected:</p>
+        <h4 class="txt-blue">${{ upsellVisual }}</h4>
+      </div>
+
+      <!-- <div *ngIf="upsellPrice === '0'" class="col-md">
+        <p>2020 Commitment:</p>
+        <h4 class="txt-blue">$0</h4>
+      </div> -->
+
+      <!-- <div *ngIf="upsellResponse === 'Yes' && raised === false && fundsMet" class="col-md">
+        <p>2020 Commitment:</p>
+        <h4 class="txt-blue">${{ upsellVisual }}</h4>
+      </div>
+
+      <div *ngIf="upsellResponse === 'No' || !fundsMet" class="col-md">
+        <p>2020 Commitment:</p>
+        <h4 class="txt-blue">$0</h4>
+      </div> -->
+      
+      <div *ngIf="raised" class="col-md">
+        <p>Remaining Balance:</p>
+        <h4 class="txt-blue">$0</h4>
+      </div>
+      <div *ngIf="!raised" class="col-md">
+        <p>Remaining Balance:</p>
+        <h4 class="txt-blue">${{ raisedPlusUpsell }}</h4>
+      </div>
+      <!-- <div *ngIf="upsellResponse === 'No' && totalFundsNeeded <= 0" class="col-md">
+        <p>Remaining Balance:</p>
+        <h4 class="txt-blue">$0</h4>
+      </div>
+      <div *ngIf="upsellResponse === 'Yes' && totalFundsNeeded <= 0" class="col-md">
+        <p>Remaining Balance:</p>
+        <h4 class="txt-blue">${{ raisedMinusUpsell }}</h4>
+      </div> -->
+    </div>
+    <div class="row" *ngIf="fundsMet">
+      <!-- <p *ngIf="upsellResponse === 'Yes' && !fundraisingMetGoal">
+        <strong>
+          Thanks for signing up for the 2020 Ride! To complete your 2020
+          fundraising commitment and finalize your 2020 registration, please
+          complete your transaction using the Pay My Balance button or pay a $2
+          deposit to commit to your fundraising.
+        </strong>
+      </p> -->
+      <p *ngIf="!fundraisingMetGoal">
+        Take a moment to check the above for your current fundraising progress. If you have yet to reach your desired fundraising rewards level, you may choose to make either an <strong>Instant Self-Pledge</strong> or a
+        <strong>Delayed Self-Pledge</strong> to complete it.
+      </p>
+    </div>
+    <div class="row" *ngIf="
+        fundraisingMetGoal === true &&
+        upsellResponse === 'Yes' &&
+        checkinStatus !== 'committed' &&
+        checkinStatus !== 'paid'
+      ">
+      <p>
+        <strong>
+          Congratulations on reaching your fundraising commitment! To finalize
+          your registration for the 2019 event, please select the Pay My Balance
+          button below.
+        </strong>
+      </p>
+    </div>
+
+    <!--BEGIN DSP / ISP -->
+    <div class="border-btm" *ngIf="hideDSP === true || hideISP === true"></div>
+
+    <!-- ISP ROW -->
+    <div class="row" *ngIf="hideISP === true">
+      <h4 *ngIf="!fundraisingMetGoal">Instant Self-Pledge</h4>
+      <h4 *ngIf="upsellResponse === 'Yes' && fundraisingMetGoal">
+        Pay For My 2019 Registration
+      </h4>
+      <p *ngIf="!fundraisingMetGoal">
+        An Instant Self-Pledge is the option to pay the remainder of your Road to Rewards fundraising goal balance with a valid credit card during the Online Check-In process.
+      </p>
+      <p *ngIf="upsellResponse === 'Yes' && fundraisingMetGoal">
+        Complete your 2019 Ride to Conquer Cancer registration by selecting the
+        Pay My Balance button below.
+      </p>
+      <a *ngIf="upsellResponse === 'No'" target="_blank" href="{{ ispURL }}">
+        <button class="btn-bw dsp-isp">Pay My Balance</button>
+      </a>
+      
+      <a *ngIf="upsellResponse === 'Yes' && raised" target="_blank" href="{{ ispURL + ispTail }}">
+        <button *ngIf="buttonFundsNeeded === false" class="btn-bw dsp-isp">
+          Pay ${{ upsellVisual }}
+        </button>
+      </a>
+      <a *ngIf="upsellResponse === 'Yes' && !raised" target="_blank" href="{{ ispURL + ispTail }}">
+        <button *ngIf="buttonFundsNeeded === false" class="btn-bw dsp-isp">
+          Pay ${{ raisedPlusUpsell }}
+        </button>
+      </a>
+      <!-- <a *ngIf="fundsMet === true && upsellResponse === 'No'" target="_blank" href="{{ ispURL }}">
+        <button class="btn-bw dsp-isp">
+          Pay My Balance: ${{ raisedPlusUpsell }}
+        </button>
+      </a>
+      <a *ngIf="totalFundsNeeded > 0 && upsellResponse === 'Yes'" target="_blank" href="{{ ispURL }}">
+        <button *ngIf="buttonFundsNeeded === true" class="btn-bw dsp-isp">
+          Pay My Balance: ${{ raisedPlusUpsell }}
+        </button>
+      </a> -->
+    </div>
+
+    <!-- DSP ROW -->
+    <div class="row" *ngIf="hideDSP === true">
+      <h4>Delayed Self-Pledge</h4>
+      <p>
+        A Delayed Self-Pledge is the option to commit to paying the remainder of your desired fundraising amount on October 29, 2020. Should you decide to make a Delayed Self-Pledge, an initial deposit of $2 will automatically be charged to your credit card. You will then be given an additional eight weeks starting from August 29, 2020, to continue fundraising. At the end of those eight weeks, any outstanding amount will be charged to your credit card (October 29, 2020). For example, if you have raised $750 and aim to secure $1,000 in donations to earn the 2020 Ride Jersey, you can make a delayed self-pledge of $2 and continue fundraising until October 29th.  Should you reach $900 by October 29th, only $98 will be charged to your credit card.
+      </p>
+      <a target="_blank" href="{{ dspURL }}">
+        <button class="btn-bw dsp-isp">Pay $2 Deposit</button>
+      </a>
+    </div>
+
+    <div class="border-btm" *ngIf="hideDSP === true || hideISP === true"></div>
+    <!-- END DSP / ISP -->
+
+    <div class="row" *ngIf="fundsMet">
+      <h4>Update My Status</h4>
+      <p>
+        Have you made an Instant Self-Pledge or Delayed Self-Pledge in the last few minutes? Click the “Update Status” below to refresh the page and display your current fundraising progress.
+      </p>
+      <button (click)="reload()" class="btn-bw">Update Status</button>
+    </div>
+
+    <div class="border-btm" *ngIf="fundsMet"></div>
+  </div>
+
+  <div class="row bottom-nav-row">
+    <div class="form-container">
+      <div class="btn-container">
+        <button mat-raised-button color="accent" class="prev-btn button-font" (click)="previousFlowStep()"
+          *ngIf="checkInCommitted">
+          Back
+        </button>
+        <button mat-raised-button color="primary" class="next-btn button-font" (click)="nextFlowStep()"
+          [disabled]="fundsMet">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

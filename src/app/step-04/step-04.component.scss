@@ -1,0 +1,232 @@
+//@import '../../styles.scss';
+
+//#step-03,
+//#step-03-french{
+//  .sizing-link {
+//    text-decoration: underline;
+//  }
+//	@media screen and (max-width: 768px) {
+//		margin-top: 20px;
+//	}
+//}
+
+//@import '../../styles.scss';
+// #mat-radio-19,
+// #mat-radio-21,
+// #mat-radio-6,
+// #mat-radio-9,
+// #mat-radio-10,
+// #mat-radio-11,
+// #mat-radio-12
+// {
+//   padding-bottom: 15px;
+// }
+
+// .top {
+//   padding-top: 30px;
+// }
+
+.col-12 {
+  p,
+  .btn-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 30px;
+    @media screen and (max-width: 400px) {
+      margin: 0 auto;
+    }
+  }
+  h3 {
+    @media screen and (max-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+}
+.sizing-link {
+  text-decoration: underline;
+}
+.mat-form-field-infix {
+  width: 100%;
+}
+
+.break-responsive {
+  @media screen and (max-width:380px) {
+    display: block;
+    width: 100%;
+  }
+}
+
+.mat-input {
+  //max-width: 300px;
+  @media screen and (max-width: 400px) {
+    max-width: none;
+  }
+}
+
+.change-txt {
+  margin-bottom: 0px;
+  small {
+    margin-left: 15px;
+  }
+}
+
+.link-black {
+  color: #000000;
+  text-decoration: underline;
+  // font-family: FuturaBold, Arial, sans-serif;
+  font-family: FuturaReg, Arial, sans-serif;
+}
+.border-btm {
+  margin: 20px 0;
+}
+
+.button-font {
+  font-family: FuturaBold, Arial, sans-serif;
+}
+
+.margin-top {
+  margin-top: 15px;
+}
+
+.prev-btn {
+  margin-right: 30px;
+}
+
+.mat-radio-button {
+  display: block;
+}
+
+strong {
+  a {
+    color: #0075c9;
+  }
+}
+.form-group {
+  p {
+    font-size: 0.99rem;
+  }
+}
+
+.form-container {
+  margin-top: 0;
+
+  ul {
+    list-style: circle;
+    // padding-left: 0;
+  }
+  // li {
+  //   padding-bottom: 15px;
+  // }
+}
+.error-top {
+  margin-top: 10px;
+}
+
+
+.form-group:first-child .mat-input,
+.form-group:nth-child(2) .mat-input{
+  max-width: none;
+}
+
+::ng-deep label.mat-radio-label {
+  margin-bottom: 0;
+  // white-space: normal;
+}
+
+::ng-deep .reward.route-radio-button:nth-of-type(1) .mat-radio-label {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+// ::ng-deep .reward.route-radio-button:nth-of-type(2) .mat-radio-label {
+//   margin-top: 10px !important;
+//   margin-bottom: 10px !important;
+// }
+::ng-deep .reward.route-radio-button:nth-of-type(2) .mat-radio-label {
+  margin-top: 10px !important;
+}
+::ng-deep .reward.route-radio-button:nth-of-type(3) .mat-radio-label {
+  margin-bottom: 10px !important;
+}
+::ng-deep .reward.route-radio-button:nth-of-type(4) .mat-radio-label {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+
+::ng-deep .share.route-radio-button:nth-of-type(1) .mat-radio-label {
+    margin-top: 10px !important;
+}
+::ng-deep .share.route-radio-button:nth-of-type(7) .mat-radio-label {
+    margin-top: 10px !important;
+}
+::ng-deep .share.route-radio-button:nth-of-type(9) .mat-radio-label {
+    margin-top: 10px !important;
+}
+
+// ::ng-deep .reward.route-radio-button:nth-of-type(1)::before {
+//   font-weight: bold;
+//   white-space: pre-wrap;
+//   content: "Scarborough – Lawrence Ave E and Warden Ave – Drive and Park Location \a D'Ornellas Bike Shop - 1894 Lawrence Ave E, Scarborough, ON M1R 2Y5";
+// }
+
+// ::ng-deep .reward.route-radio-button:nth-of-type(2)::before {
+//   font-weight: bold;
+//   white-space: pre-wrap;
+//   content: 'North York – Yonge and 401 - Walk Thru Location \a Kind Human Bike Shop - 1924 Avenue Rd, North York, ON M5M 4A1';
+// }
+
+::ng-deep .reward.route-radio-button:nth-of-type(1)::before {
+  // font-style: italic;
+  font-weight: bold;
+  white-space: pre-wrap;
+  content: 'Midtown Toronto - Yonge and Eglinton – Walk Thru Location \a 110 Eglinton Avenue East, Suite 603, Toronto, Ontario M4P 2Y1 ';
+
+}
+
+::ng-deep .reward.route-radio-button:nth-of-type(2)::before {
+  // font-style: italic;
+  content: 'Mississauga – Dundas St E and Dixie Rd – Drive Thru Location \a Apple Self Storage Parking Lot, 1650 Dundas Street East, Mississauga, Ont. L4X 2Z3';
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+
+::ng-deep .reward.route-radio-button:nth-of-type(4)::before {
+  // font-style: italic;
+  font-weight: bold;
+  white-space: pre-wrap;
+  content: 'Niagara Falls - Drive Thru Location \a Salit Steel - 7771 Stanley Ave, Niagara Falls, ON L2E 6V6';
+}
+
+// ::ng-deep .reward.route-radio-button:nth-of-type(7)::before {
+//   // font-style: italic;
+//   font-weight: bold;
+//   content: 'Hamilton (Location TBD)';
+// }
+
+// ::ng-deep .reward.route-radio-button:nth-of-type(8)::before {
+//   font-weight: bold;
+//   white-space: pre-wrap;
+//   content: 'Niagara Falls - Drive Thru Location \a Salit Steel - 7771 Stanley Ave, Niagara Falls, ON L2E 6V6';
+// }
+
+::ng-deep .share.route-radio-button:nth-of-type(1)::before {
+  font-weight: bold;
+  content: 'Classic Routes';
+}
+
+::ng-deep .share.route-radio-button:nth-of-type(7)::before {
+  font-weight: bold;
+  content: 'Hill Challenges';
+}
+
+::ng-deep .share.route-radio-button:nth-of-type(9)::before {
+  font-weight: bold;
+  content: 'Toronto Trail Routes';
+}
+
+@media screen and (max-width: 400px) {
+  .form-container {
+    margin-top: 15px;
+  }
+}

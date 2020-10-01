@@ -1,0 +1,126 @@
+<app-stepper></app-stepper>
+
+<!-- Preloader -->
+<div class="mat-spinner-container" *ngIf="!surveyResults.getSurveyResponsesResponse">
+  <div class="spinner-inner">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+
+<div class="container" id="step-04">
+  <div class="row">
+    <div class="col-12">
+      <h3 class="text-center">Road to Rewards Pick-Up Points</h3>
+      <p class="text-center">
+        As part of the Road to Rewards program your fundraising helps you earn
+        amazing Ride merch.
+      </p>
+    </div>
+  </div>
+  <div class="row" *ngIf="surveyResults.getSurveyResponsesResponse">
+
+    <div class="border-btm"></div>
+
+    <div class="form-container">
+      <!-- Road To Rewards Banner -->
+      <div style="text-align: center;">
+        <img class="img-fluid"
+          src="https://secure2.convio.net/cfrca/images/content/pagebuilder/20065_RCTO_MilestoneProgram_Email.jpg"
+          alt="Upsell Re-Reg" />
+      </div>
+      <br />
+      <p>
+        For your convenience we have set up pick-up depots where you can grab
+        your rewards.*
+      </p>
+      <p style="font-style: italic; font-size: small;">
+        *Note: Your Ride rewards will only be available for pick up if you complete Online Check-In by August 26th, 2020. If you check in after this date, your Ride rewards will need to be picked up at a later date (times and locations to be announced after event day). Hammer Vests will be available after August 29th, 2020 once you have completed your 100-mile ride.
+      </p>
+      <br />
+      <p>Select your Rewards Pick-Up Point and pick-up time:</p>
+      <p>
+        For social distancing instructions, addresses and more specific pick-up point details check out our <a href="https://ride.conquercancer.ca/toronto20/about/event-details/" target="_blank" rel="noopener">Event Details</a> page. Keep an eye on your emails as we will communicate any updates or changes to pick up point protocols if necessary.
+      </p>
+      <div id="pick-up-depots"></div>
+      <br />
+      <form class="form-container" [formGroup]="step04Form" *ngIf="step04Form">
+        <div class="form-group">
+
+          <!-- <mat-radio-group class="route-radio-group" formControlName="rewardsPick" [(ngModel)]="rewardRes">
+            <mat-radio-button class="route-radio-button reward" color="primary" *ngFor="let reward of Rewards"
+              [value]="reward.value">
+              {{ reward.viewValue }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="error-msg" *ngIf="rewardError === true">
+            Reward is <strong>required</strong>
+          </div> -->
+
+          <h3 class="top text-center">How Will You Go Virtual?</h3>
+          <p class="text-center">
+            Please share with us how you will participate in the 2020 Enbridge Ride
+            to Conquer Cancer® virtual ride event:
+          </p>
+          <p>
+            <strong>I plan to ride one of the shared routes</strong>
+          </p>
+          <p>
+            See our event details page for more information on these routes.
+          </p>
+          <mat-radio-group class="route-radio-group" formControlName="sharedRoutes" [(ngModel)]="sharedRoute">
+            <mat-radio-button class="route-radio-button share" color="primary" *ngFor="let routes of sharedRouteSelector"
+              [value]="routes.value">
+              {{ routes.viewValue }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="error-msg" *ngIf="routeError === true">
+            Route is <strong>required</strong>
+          </div>
+        </div>
+        <!-- organized Zwift meetings -->
+        <!-- <div class="form-group">
+          <p>
+            <strong>I will be joining one of the organized virtual Zwift meet ups hosted by KPMG</strong>
+          </p>
+          <mat-radio-group class="route-radio-group" formControlName="zwiftMeetings" [(ngModel)]="zwiftMeeting">
+            <mat-radio-button class="route-radio-button" color="primary" *ngFor="let selection of zwiftMeetingSelector"
+              [value]="selection.value">
+              {{ selection.viewValue }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="error-msg" *ngIf="zwiftError === true">
+            Zwift is <strong>required</strong>
+          </div>
+        </div> -->
+        <!-- Own Participation -->
+        <div class="form-group">
+          <p>
+            <strong>I will participate my own way</strong>
+          </p>
+          <mat-form-field class="mat-input">
+            <textarea matInput placeholder="please share with us" value="{{ selfParticipation }}"
+              [(ngModel)]="selfParticipation" formControlName="ownRoute"></textarea>
+          </mat-form-field>
+          <div class="error-msg" *ngIf="ownError === true">
+            Participation is <strong>required</strong>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="surveyResults.getSurveyResponsesResponse">
+    <div class="col-12">
+      <div class="btn-container">
+        <button mat-raised-button color="accent" class="prev-btn" (click)="previousFlowStep()">
+          Back
+        </button>
+        <button mat-raised-button color="primary" class="next-btn" (click)="validating()">
+          Next
+        </button>
+      </div>
+      <div class="save-col">
+        <a (click)="saveSurveyRes()" class="save-later float-right text-uppercase">Save For Later</a>
+      </div>
+    </div>
+  </div>
+</div>
